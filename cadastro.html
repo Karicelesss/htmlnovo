@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Creche</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Coluna da Esquerda */
+        .left-column {
+            flex-basis: 45%;
+            background-color: #f0f0f0;
+            
+            /* IMAGEM ALTERADA AQUI */
+            background-image: url(img/ca.png);
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .welcome-card {
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo do card */
+            -webkit-backdrop-filter: blur(5px);
+            padding: 4rem 3rem;
+            text-align: center;
+            border-radius: 20px;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Ajuste para o texto de boas-vindas ficar mais nítido sobre a nova foto */
+        .welcome-card h1 {
+            font-family: 'Poppins', sans-serif; /* Fonte alterada para melhor legibilidade */
+            font-size: 3rem;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .welcome-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+
+        .right-column {
+            flex-basis: 55%;
+            background-color: #FFFFFF;
+            padding: 2.5rem 7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .login-section {
+            text-align: right;
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .login-section a {
+            font-weight: bold;
+            color: #FFC72C;
+            text-decoration: none;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        .form-area {
+            flex-grow: 1;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #D4BBAA;
+            border-radius: 10px;
+            background-color: #FFF4DF;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FFD972;
+            box-shadow: 0 0 0 3px rgba(255, 217, 114, 0.5);
+        }
+
+        .photo-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2.3rem; 
+            flex-shrink: 0;
+        }
+
+        .photo-circle {
+            width: 110px;
+            height: 110px;
+            background-color: #FFD972;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .photo-circle:hover {
+            transform: scale(1.05);
+        }
+        
+        .photo-circle .camera-icon {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .photo-upload-container p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            margin-top: 2rem;
+            background-color: #FFD972;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .submit-btn:hover {
+            background-color: #f0c355;
+        }
+
+        @media (max-width: 850px) {
+            body, html {
+                overflow-y: auto;
+                height: auto;
+            }
+
+            .container {
+                flex-direction: column;
+                height: auto; 
+            }
+
+            .left-column {
+                display: block; /* Garante que a imagem apareça em telas menores também */
+                flex-basis: auto;
+                height: 300px; /* Altura fixa para a imagem no celular */
+            }
+            
+            .welcome-card { display: none; } /* Esconde o card "Bem-Vindo" no celular para dar foco à imagem */
+
+            .right-column {
+                flex-basis: 100%;
+                padding: 2rem 1.5rem;
+                justify-content: flex-start;
+                overflow-y: visible;
+            }
+            
+            .login-section {
+                text-align: center;
+                margin-bottom: 2.5rem;
+            }
+
+            .main-content {
+                flex-direction: column;
+                align-items: center; 
+            }
+
+            .form-area {
+                width: 100%;
+                order: 2;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1.1rem;
+            }
+
+            .photo-upload-container {
+                order: 1;
+                margin-top: 0;
+                padding-top: 0;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-column">
+            
+        </div>
+
+        <div class="right-column">
+            <div class="login-section">
+                <span>Já é cadastrado? <a href="login.html">Login</a></span>
+            </div>
+
+            <div class="main-content">
+                <form id="cadastro-form" class="form-area" onsubmit="return false;">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="nome_creche">Nome da Creche</label>
+                            <input type="text" id="nome_creche" name="nome_creche" placeholder="Ex: Saber de luz" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cnpj">CNPJ</label>
+                            <input type="text" id="cnpj" name="cnpj" placeholder="Ex: 57.545.222/0001-40" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="Ex: (71) 98888-8888" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cep">Cep</label>
+                            <input type="text" id="cep" name="cep" placeholder="Ex: 40140-650" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rua">Rua</label>
+                            <input type="text" id="rua" name="rua" placeholder="Ex: Rua das Flores" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" name="bairro" placeholder="Ex: Ipitanga" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" name="cidade" placeholder="Ex: Salvador" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="Ex: saberdaluz@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" placeholder="Crie a sua senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmar_senha">Confirme a senha</label>
+                            <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme a sua senha" required>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="submit-btn full-width" onclick="validarEContinuar()">Continue</button>
+                </form>
+
+                <div class="photo-upload-container">
+                    <div class="photo-circle">
+                        <i class="fas fa-camera camera-icon"></i>
+                    </div>
+                    <p>Adicione uma foto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validarEContinuar() {
+            const form = document.getElementById('cadastro-form');
+
+            if (form.checkValidity()) {
+                window.location.href = 'certo.html';
+            } else {
+                form.reportValidity();
+            }
+        }
+    </script>
+
+</body>
+</html>
