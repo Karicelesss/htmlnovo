@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
 
-        
+        /* --- Configuração Geral --- */
         body, html {
             margin: 0;
             padding: 0;
@@ -26,19 +26,19 @@
             height: 100vh;
         }
 
-       
+        /* --- Painel Esquerdo (Imagem) --- */
         .left-panel {
             flex: 1;
-            max-width: 50%; 
+            max-width: 50%;
         }
 
         .left-panel img {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
+            object-fit: cover;
         }
 
-       
+        /* --- Painel Direito (Formulário de Login) --- */
         .right-panel {
             flex: 1;
             display: flex;
@@ -90,7 +90,7 @@
             background-color: #FFF9E8;
             padding: 0 20px;
             font-size: 1rem;
-            box-sizing: border-box; 
+            box-sizing: border-box;
             color: #3B3B3B;
         }
         
@@ -130,18 +130,27 @@
             text-decoration: underline;
         }
 
+        /* --- CSS DO BOTÃO ALTERADO --- */
         #submit-btn {
+            /* Adicionado para o link se comportar como um bloco */
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            line-height: 60px; /* Alinha o texto verticalmente */
+
+            /* Estilos que já existiam */
             width: 100%;
             height: 60px;
             border-radius: 30px;
             border: 1px solid #E0B400;
-            background-color: #FFD972;
+            background-color: #FFD43B;
             font-size: 1.2rem;
             font-weight: bold;
             font-family: 'Kodchasan', sans-serif;
             cursor: pointer;
             margin-top: 30px;
             color: #000;
+            box-sizing: border-box;
         }
         
         .error-message {
@@ -156,7 +165,7 @@
 <body>
     <div class="main-container">
         <div class="left-panel">
-            <img src="/img/BV.svg" alt="Banner de boas-vindas com ilustrações infantis">
+            <img src="img/BV.svg" alt="Banner de boas-vindas com ilustrações infantis">
         </div>
 
         <div class="right-panel">
@@ -164,7 +173,7 @@
                 <h1>Login</h1>
                 <h2>Sentimos falta de você!</h2>
 
-                <form id="meuform" method="POST" action="/caminho-do-seu-backend">
+                <form id="meuform">
                     <div class="form-group">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
@@ -179,11 +188,11 @@
                     </div>
                     
                     <div class="form-links">
-                        <p>Não é cadastrado? <a href="cadastro.html">Cadastro</a></p>
+                        <p>Não é cadastrado? <a href="#">Cadastro</a></p>
                         <a href="#">Esqueceu a senha?</a>
                     </div>
 
-                    <button type="submit" id="submit-btn">Entrar</button>
+                    <a href="home.html" id="submit-btn">Entrar</a>
                 </form>
             </div>
         </div>
@@ -195,11 +204,8 @@
         const passwordInput = document.querySelector('#password');
 
         togglePassword.addEventListener('click', function () {
-            // Alterna o tipo do input entre 'password' e 'text'
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            
-            // Alterna o ícone do olho
             this.classList.toggle('fa-eye-slash');
         });
     </script>
